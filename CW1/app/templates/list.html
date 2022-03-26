@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block title %}List{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/list.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="center">
+        {#add new assessment button#}
+        <input type="checkbox" id="show" class="addButtonCheck">
+        <div class="addButton">
+            <label for="show" class="show-btn">Add New Assessment</label>
+        </div>
+        {#add new assessment form#}
+        <div class="formContainer">
+            <label for="show" class="close-btn fas fa-times" title="close"></label>
+            <div class="text">
+                Add Assessment
+            </div>
+            <form action="/add" method="post">
+                {{ form.hidden_tag() }}
+                <div class="data">
+                    <label>Module code</label>
+                    {{ form.code(type="text", class="input form-control", placeholder="(less than 20 characters)",  required="required", maxlength="20") }}
+                </div>
+                <div class="data">
+                    <label>Title</label>
+                    {{ form.title(type="text", class="input form-control", placeholder="(less than 100 characters)",  required="required", maxlength="100") }}
+                </div>
+                <div class="data">
+                    <label>Deadline Date</label>
+                    {{ form.deadline(type="date", class="input form-control", required="required") }}
+                </div>
+                <div class="data">
+                    <label>Description</label>
+                    {{ form.description(class="textarea form-control", placeholder="(less than 500 characters)", maxlength="100") }}
+                </div>
+                <div class="data">
+                    <input type="submit" value="Confirm" class="btn">
+                </div>
+            </form>
+        </div>
+    </div>
+    {#search assessments form#}
+    <form action="/search" method="POST" class="searchForm">
+        {{ form.hidden_tag() }}
+        <div class="select">
+            <h1>Module Code</h1>
+            <div class="select">
+                <select name="searchCode" class="select-css">
+                    <option value="No requirements">No requirements</option>
+                    {% for code in code_list %}
+                        <option value="{{ code.code }}">{{ code.code }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <h1>Title</h1>
+            <input type="text" class="input" placeholder="(less than 100 characters)" name="searchTitle"
+                   maxlength="100">
+            <h1>State</h1>
+            <select name="searchState" class="select-css">
+                <option value="No requirements">No requirements</option>
+                <option value="Uncompleted">Uncompleted</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <input type="submit" value="Search" class="btn">
+        </div>
+    </form>
+    {#search assessments button#}
+    <div class="searchButton">
+        <button type="button" onclick="window.location.href='{{ url_for( 'list') }}';" class="fill">Show All
+            assessments
+        </button>
+    </div>
+    {#assessments card#}
+    <div class="wrapper">
+        <div class="center-line">
+            <a href="#" class="scroll-icon"><i class="fas fa-caret-up"></i></a>
+        </div>
+        {% for todo in todo_list %}
+            {% if loop.index is odd %}
+                <div class="row row-1">
+            {% elif loop.index is even %}
+                <div class="row row-2">
+            {% endif %}
+        <section>
+            <i class="icon fas fa-home"></i>
+            <div class="details">
+                <img src="../static/icon/computer.png" style="width: 50px" alt="computer icon">
+                <span class="title">{{ todo.code }}</span>
+                <span class="date">{{ todo.deadline.year }}. {{ todo.deadline.month }}. {{ todo.deadline.day }}</span>
+            </div>
+            <div class="state">
+                {% if todo.complete == False %}
+                    <span class="complete">Uncompleted</span>
+                {% else %}
+                    <span class="complete">Completed</span>
+                {% endif %}
+                <a href="/update/{{ todo.id }}" class="link">Update Status</a>
+                <a href="/delete/{{ todo.id }}" class="link">Delete</a>
+                <a class="button link" data-modal="{{ loop.index }}">Edit</a>
+                {#edit form#}
+                <div id="{{ loop.index }}" class="modal">
+                    <div class="modal-content">
+                        <div class="contact-form">
+                            <a class="close">&times;</a>
+                            <form action="/edit/{{ todo.id }}" method="POST">
+                                {{ form.hidden_tag() }}
+                                <h2>Edit the assessment</h2>
+                                <div class="data">
+                                    <label>Module code</label>
+                                    <input type="text" class="input" placeholder="{{ todo.code }}" name="editCode"
+                                           maxlength="20">
+                                </div>
+                                <div class="data">
+                                    <label>Title</label>
+                                    <input type="text" class="input" placeholder="{{ todo.title }}" name="editTitle"
+                                           maxlength="100">
+                                </div>
+                                <div class="data">
+                                    <label>Deadline Date</label>
+                                    <input type="date" class="input" name="editDate">
+                                </div>
+                                <div class="data">
+                                    <label>Description</label>
+                                    <textarea class="textarea" placeholder="{{ todo.description }}"
+                                              name="editDescription" maxlength="500"></textarea>
+                                </div>
+                                <div class="data">
+                                    <input type="submit" value="Confirm" class="btn">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo">
+                    <span class="todoTitle">{{ todo.title }}</span>
+                    <p>{{ todo.description }}</p>
+                </div>
+            </div>
+        </section>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/nav.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+{#navigation bar#}
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">
+            <img src="../static/image/logo1.png" style="width: 250px; height: 200px"
+                 alt="website logo: owl within list">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="color: white">
+            <ul class="navbar-nav ml-lg-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" style="color: white">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/list" style="color: white">List</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<hr class="hr">
+{% block content %}{% endblock %}
+<script src="{{ url_for('static',filename='javascript/slim.min.js') }}"></script>
+<script src="{{ url_for('static',filename='javascript/popper.min.js') }}"></script>
+<script src="{{ url_for('static',filename='javascript/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='javascript/popUp.js') }}"></script>
+<script src="{{ url_for('static',filename='javascript/jquery.min.js') }}"></script>
+<script src="{{ url_for('static',filename='javascript/modernizr.custom.79639.js') }}"></script>
+</body>
+</html>

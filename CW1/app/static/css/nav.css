@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Century Gothic;
+}
+
+header {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+}
+
+/* navigation bar */
+.navbar {
+    color: #abdde5;
+    font-size: 50px;
+}
+
+.nav-item {
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0px 40px;
+}
+
+.navbar-dark .navbar-toggler {
+    border: none;
+    border: 5px solid #ffffff;
+    border-radius: 1px;
+}
+
+/* line */
+.hr {
+    margin: auto;
+    width: 90%;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+}
+
+

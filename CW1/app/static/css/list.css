@@ -1,0 +1,542 @@
+body {
+    background: url(../../static/image/listbg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-position: center;
+}
+
+/* add assessment button */
+.addButtonCheck {
+    display: none;
+}
+
+.addButton {
+    text-align: center;
+}
+
+.show-btn {
+    width: 80%;
+    padding: 10px 20px;
+    font-size: 30px;
+    font-weight: 1000;
+    color: #FDF6F0;
+    cursor: pointer;
+    box-shadow: 10px 2px 20px #b4d3df;
+}
+
+/* add new assessment form */
+.formContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.formContainer {
+    display: none;
+    background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
+    width: 410px;
+    padding: 30px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+#show:checked ~ .formContainer {
+    display: block;
+    z-index: 100;
+}
+
+.formContainer .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.formContainer .close-btn:hover {
+    color: #2980b9;
+}
+
+.formContainer .text {
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.formContainer form {
+    margin-top: -20px;
+}
+
+.formContainer form .data {
+    height: 45px;
+    width: 100%;
+    margin: 40px 0;
+}
+
+form .data label {
+    font-size: 18px;
+}
+
+form .data input {
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 17px;
+    border: 1px solid silver;
+}
+
+form .data input:focus {
+    border-color: #2c3e50;
+    border-bottom-width: 2px;
+}
+
+form .btn {
+    margin: 30px 0;
+    height: 45px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+}
+
+.textarea {
+    width: 100%;
+    outline: none;
+    border: 1px solid #d5dbd9;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/*search combo box*/
+.select-css {
+    width: 80%;
+    font-size: 20px;
+    color: #444;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
+    border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #FFF7E0;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom, #ffffff 0%, #FFF7E0 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+
+.select-css::-ms-expand {
+    display: none;
+}
+
+.select-css:hover {
+    border-color: #888;
+}
+
+.select-css:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222;
+    outline: none;
+}
+
+.select-css option {
+    font-weight: normal;
+}
+
+/* search assessments form */
+.searchForm {
+    text-align: center;
+}
+
+h1 {
+    text-align: left;
+    margin-left: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #eff6f8;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 4px;
+}
+
+/* input field */
+.select input {
+    width: 80%;
+    background-color: #FFF7E0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .01);
+    border-radius: .5em;
+    font-size: 20px;
+}
+
+/*search button*/
+.searchButton {
+    text-align: center;
+}
+
+.fill {
+    width: 80%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+}
+
+.fill::after {
+    content: "";
+    background-color: #FAEEE0;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+
+.fill:hover::after {
+    top: 0px;
+    left: 0px;
+}
+
+/* assessment card */
+.wrapper {
+    max-width: 1080px;
+    margin: 10px auto;
+    /*padding: 0 10px;*/
+    position: relative;
+}
+
+.wrapper .center-line {
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    background: #34495e;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+}
+
+.wrapper .row {
+    display: flex;
+}
+
+.wrapper .row-1 {
+    justify-content: flex-start;
+}
+
+.wrapper .row-2 {
+    justify-content: flex-end;
+}
+
+.details {
+    padding: 6.18px;
+    border: 3px solid #90AACB;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #E8F6EF;
+}
+
+.state {
+    padding: 6.18px;
+    border: 3px solid #90AACB;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #d5ebff;
+}
+
+.title {
+    color: #39A2DB;
+    font-size: 50px;
+}
+
+.date {
+    color: #39A2DB;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.complete {
+    color: #006266;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/*hyperlink style*/
+.link {
+    font-size: 16px;
+    color: #193498;
+    background-color: #f7fbff;
+    border-radius: 5px;
+    padding: 5px 5px;
+    margin: 5px 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.link:hover {
+    background-color: #A2D2FF;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.todo {
+    font-size: 20px;
+    color: #000e1a;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.todoTitle {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.wrapper .row section {
+    border-radius: 5px;
+    width: calc(50% - 40px);
+    padding: 20px 10px;
+    position: relative;
+}
+
+.wrapper .row section::before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: #fff;
+    top: 28px;
+    z-index: -1;
+    transform: rotate(45deg);
+}
+
+.row-1 section::before {
+    right: -7px;
+}
+
+.row-2 section::before {
+    left: -7px;
+}
+
+.row section .icon,
+.center-line .scroll-icon {
+    position: absolute;
+    background: #f2f2f2;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #78b1c6;
+    font-size: 17px;
+    box-shadow: 0 0 0 4px #fff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.center-line .scroll-icon {
+    bottom: 0px;
+    left: 50%;
+    font-size: 25px;
+    transform: translateX(-50%);
+}
+
+.row-1 section .icon {
+    top: 15px;
+    right: -60px;
+}
+
+.row-2 section .icon {
+    top: 15px;
+    left: -60px;
+}
+
+.row section .details,
+.row section .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.row section .details .title {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.row section p {
+    margin: 10px 0 17px 0;
+}
+
+.row section .bottom a {
+    text-decoration: none;
+    background: #ff7979;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 5px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.row section .bottom a:hover {
+    transform: scale(0.97);
+}
+
+.checkbox {
+    height: 90px;
+    width: 270px;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkbox input {
+    outline: none;
+    height: 20px;
+    width: 50px;
+    border-radius: 50px;
+    -webkit-appearance: none;
+    position: relative;
+    background: #e6e6e6;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.checkbox input:checked {
+    background: #664AFF;
+}
+
+.checkbox input:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    height: 100%;
+    width: 30px;
+    background: linear-gradient(#fff, #f2f2f2, #e6e6e6, #d9d9d9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    transform: scale(0.85);
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+input:checked:before {
+    left: 20px;
+}
+
+.checkbox .text:before {
+    content: "Undone";
+    font-size: 25px;
+    font-weight: 500;
+    color: #bfbfbf;
+}
+
+input:checked ~ .text:before {
+    color: #664AFF;
+    font-size: 25px;
+    content: "Done";
+}
+
+/* edit form*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 8;
+    margin: auto;
+    width: 70%;
+    height: 100%;
+    overflow: auto;
+    text-align: left;;
+}
+
+.modal h2 {
+    text-align: center;
+}
+
+.modal-content {
+    margin: 50px auto;
+    border: 1px solid #999;
+    width: 40%;
+    padding: 30px
+}
+
+.modal-content {
+    background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 70%);
+}
+
+input,
+textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #1c87c9;
+    outline: none;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* media */
+@media (max-width: 790px) {
+    /* assessment card*/
+    .wrapper .center-line {
+        left: 40px;
+    }
+
+    .wrapper .row {
+        margin: 30px 0 3px 60px;
+    }
+
+    .wrapper .row section {
+        width: 100%;
+    }
+
+    .row-1 section::before {
+        left: -7px;
+    }
+
+    .row-1 section .icon {
+        left: -60px;
+    }
+}
+
+@media (max-width: 440px) {
+    /* assessment card*/
+    .wrapper .center-line,
+    .row section::before,
+    .row section .icon {
+        display: none;
+    }
+
+    .wrapper .row {
+        margin: 10px 0;
+    }
+}
+
+
+
+
+
